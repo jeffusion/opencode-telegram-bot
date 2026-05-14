@@ -3,11 +3,15 @@
  */
 export interface AgentInfo {
   name: string;
-  description?: string;
-  color?: string;
+  description?: string | undefined;
+  color?: string | undefined;
   mode: "subagent" | "primary" | "all";
-  hidden?: boolean;
-  steps?: number;
+  hidden?: boolean | undefined;
+  steps?: number | undefined;
+  model?: {
+    modelID: string;
+    providerID: string;
+  } | undefined;
 }
 
 /**
