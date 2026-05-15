@@ -208,6 +208,24 @@ export const it: I18nDictionary = {
   "sessions.preview.title": "Messaggi recenti:",
   "sessions.preview.you": "Tu:",
   "sessions.preview.agent": "Agente:",
+  "sessions.button.select": "✅ Seleziona",
+  "sessions.button.rename": "✏️ Rinomina",
+  "sessions.button.delete": "🗑 Elimina",
+  "sessions.button.close": "✖ Chiudi",
+  "sessions.current_session": "Già selezionata",
+  "sessions.rename.prompt": "📝 Inserisci il nuovo titolo:\n\nCorrente: {title}",
+  "sessions.rename.cancel": "❌ Annulla",
+  "sessions.rename.empty": "⚠️ Il titolo non può essere vuoto.",
+  "sessions.rename.success": "✅ Sessione rinominata in: {title}",
+  "sessions.rename.error": "🔴 Rinomina della sessione non riuscita.",
+  "sessions.delete.confirm":
+    "Eliminare la sessione «{title}»? Questa operazione non può essere annullata.",
+  "sessions.delete.yes": "✅ Sì, elimina",
+  "sessions.delete.no": "❌ No",
+  "sessions.delete.success": "✅ Sessione eliminata: {title}",
+  "sessions.delete.not_found": "🔴 Sessione non trovata. Potrebbe essere già stata eliminata.",
+  "sessions.delete.error": "🔴 Eliminazione della sessione non riuscita.",
+  "sessions.deleted_external": "🗑 Sessione eliminata: {title}\nSei stato disconnesso.",
 
   "messages.project_not_selected":
     "🏗 Nessun progetto selezionato.\n\nSeleziona prima un progetto con /projects.",
@@ -482,20 +500,6 @@ export const it: I18nDictionary = {
   "runtime.container.command_unavailable":
     "⚠️ Questo comando non è disponibile nell'immagine Docker.",
 
-  "rename.no_session": "⚠️ Nessuna sessione attiva. Crea o seleziona prima una sessione.",
-  "rename.prompt": "📝 Inserisci il nuovo titolo della sessione:\n\nCorrente: {title}",
-  "rename.empty_title": "⚠️ Il titolo non può essere vuoto.",
-  "rename.success": "✅ Sessione rinominata in: {title}",
-  "rename.error": "🔴 Rinomina della sessione non riuscita.",
-  "rename.cancelled": "❌ Rinomina annullata.",
-  "rename.inactive_callback": "La richiesta di rinomina non è attiva",
-  "rename.inactive": "⚠️ La richiesta di rinomina non è attiva. Esegui /rename di nuovo.",
-  "rename.blocked.expected_name":
-    "⚠️ Inserisci un nuovo nome per la sessione come testo oppure premi Annulla nel messaggio di rinomina.",
-  "rename.blocked.command_not_allowed":
-    "⚠️ Questo comando non è disponibile mentre la rinomina è in attesa di un nuovo nome.",
-  "rename.button.cancel": "❌ Annulla",
-
   "task.prompt.schedule":
     "⏰ Invia la pianificazione dell'attività in linguaggio naturale.\n\nEsempi:\n- ogni 5 minuti\n- ogni giorno alle 17:00\n- domani alle 12:00",
   "task.schedule_empty": "⚠️ La pianificazione non può essere vuota.",
@@ -605,8 +609,6 @@ export const it: I18nDictionary = {
   "mcps.button.disable": "🔴 Disabilita",
   "mcps.button.back": "⬅️ Indietro",
   "mcps.auth_required": "Questo server richiede autorizzazione e non può essere abilitato dal bot.",
-
-  "cmd.description.rename": "Rinomina la sessione corrente",
 
   "legacy.models.fetch_error": "🔴 Recupero dell'elenco dei modelli non riuscito. Controlla lo stato del server con /status.",
   "legacy.models.empty": "📋 Nessun modello disponibile. Configura i provider in OpenCode.",

@@ -126,10 +126,10 @@ describe("callback feedback helpers", () => {
       return true as never;
     });
 
-    await cancelPrompt(ctx, "rename.cancelled");
+    await cancelPrompt(ctx, "sessions.rename.cancel");
 
     expect(ctx.answerCallbackQuery).toHaveBeenCalledWith({ text: t("common.cancelled") });
-    expect(ctx.editMessageText).toHaveBeenCalledWith(t("rename.cancelled"));
+    expect(ctx.editMessageText).toHaveBeenCalledWith(t("sessions.rename.cancel"));
     expect(order).toEqual(["answer", "edit"]);
     expect(ctx.deleteMessage).not.toHaveBeenCalled();
   });

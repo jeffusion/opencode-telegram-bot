@@ -20,7 +20,7 @@ const mocked = vi.hoisted(() => ({
   handleProjectSelect: vi.fn(),
   handlePromptAttachmentCancel: vi.fn(),
   handleQuestionCallback: vi.fn(),
-  handleRenameCancel: vi.fn(),
+  handleSessionRenameCancelCallback: vi.fn(),
   handleBackgroundSessionOpen: vi.fn(),
   handleSessionSelect: vi.fn(),
   handleSettingsCallback: vi.fn(),
@@ -84,11 +84,9 @@ vi.mock("../../../src/bot/callbacks/prompt-attachment-callback-handler.js", () =
 vi.mock("../../../src/bot/callbacks/question-callback-handler.js", () => ({
   handleQuestionCallback: mocked.handleQuestionCallback,
 }));
-vi.mock("../../../src/bot/callbacks/rename-callback-handler.js", () => ({
-  handleRenameCancel: mocked.handleRenameCancel,
-}));
 vi.mock("../../../src/bot/callbacks/session-callback-handler.js", () => ({
   handleBackgroundSessionOpen: mocked.handleBackgroundSessionOpen,
+  handleSessionRenameCancelCallback: mocked.handleSessionRenameCancelCallback,
   handleSessionSelect: mocked.handleSessionSelect,
 }));
 vi.mock("../../../src/bot/callbacks/settings-callback-handler.js", () => ({
@@ -130,7 +128,7 @@ const tableHandlers = [
   mocked.handleProjectSelect,
   mocked.handlePromptAttachmentCancel,
   mocked.handleQuestionCallback,
-  mocked.handleRenameCancel,
+  mocked.handleSessionRenameCancelCallback,
   mocked.handleSessionSelect,
   mocked.handleSettingsCallback,
   mocked.handleSkillsCallback,

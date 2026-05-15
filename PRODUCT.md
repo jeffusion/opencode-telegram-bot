@@ -110,14 +110,13 @@ Current command set:
 - `/new` - create a new session
 - `/abort` - stop the current task
 - `/detach` - detach the bot from the current session without stopping it
-- `/sessions` - show and switch recent sessions
+- `/sessions` - preview, switch, rename, and delete recent sessions
 - `/messages` - browse user messages in the current session
 - `/projects` - show and switch projects
 - `/worktree` - show and switch existing git worktrees for the current repository
 - `/settings` - change bot settings
 - `/task` - create a scheduled task
 - `/tasklist` - browse and delete scheduled tasks
-- `/rename` - rename current session
 - `/commands` - browse and run custom commands (plus built-ins like `init` and `review`)
 - `/skills` - browse and run OpenCode skills
 - `/opencode_start` - start local OpenCode server
@@ -131,7 +130,7 @@ Text messages (non-commands) are treated as prompts for OpenCode only when no bl
 
 Interaction routing rules:
 
-- Only one interactive flow can be active at a time (inline menu, permission, question, rename, commands, skills, messages)
+- Only one interactive flow can be active at a time (inline menu, permission, question, custom session action, commands, skills, messages)
 - While an interaction is active, unrelated input is blocked with a contextual hint
 - Allowed utility commands during active interactions: `/help`, `/status`, `/abort`, `/detach`, `/opencode_stop`
 - Unknown slash commands return an explicit fallback message

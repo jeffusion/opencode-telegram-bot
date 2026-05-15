@@ -6,7 +6,6 @@ import {
 } from "../../../src/app/managers/interaction-manager.js";
 import { permissionManager } from "../../../src/app/managers/permission-manager.js";
 import { questionManager } from "../../../src/app/managers/question-manager.js";
-import { renameManager } from "../../../src/app/managers/rename-manager.js";
 import { taskCreationManager } from "../../../src/app/managers/scheduled-task-creation-manager.js";
 import type { PermissionRequest } from "../../../src/app/types/permission.js";
 import type { Question } from "../../../src/app/types/question.js";
@@ -64,24 +63,33 @@ describe("app/managers/interaction-error-scope", () => {
     expect(interactionManager.getSnapshot()).toBeNull();
   });
 
-  it("clears renameManager and the matching interaction for the rename scope", () => {
-    renameManager.startWaiting("session-1", "D:/repo", "Old title");
-    interactionManager.start({ kind: "rename", expectedInput: "text", metadata: {} });
+  it("clears a session rename custom interaction for the interaction scope", () => {
+    interactionManager.start({
+      kind: "custom",
+      expectedInput: "text",
+      metadata: { action: "session_rename", sessionId: "session-1" },
+    });
 
-    clearInteractionErrorState("rename", "test_cleanup");
+    clearInteractionErrorState("interaction", "test_cleanup");
 
-    expect(renameManager.isWaitingForName()).toBe(false);
     expect(interactionManager.getSnapshot()).toBeNull();
   });
 
-  it("keeps an unrelated interaction for the rename scope", () => {
-    renameManager.startWaiting("session-1", "D:/repo", "Old title");
-    interactionManager.start({ kind: "question", expectedInput: "callback", metadata: {} });
+  it("keeps a session rename custom interaction for the question scope", () => {
+    questionManager.startQuestions([TEST_QUESTION], "req-1");
+    interactionManager.start({
+      kind: "custom",
+      expectedInput: "text",
+      metadata: { action: "session_rename", sessionId: "session-1" },
+    });
 
-    clearInteractionErrorState("rename", "test_cleanup");
+    clearInteractionErrorState("question", "test_cleanup");
 
-    expect(renameManager.isWaitingForName()).toBe(false);
-    expect(interactionManager.getSnapshot()?.kind).toBe("question");
+    expect(questionManager.isActive()).toBe(false);
+    expect(interactionManager.getSnapshot()?.metadata).toEqual({
+      action: "session_rename",
+      sessionId: "session-1",
+    });
   });
 
   it("clears taskCreationManager and the matching interaction for the taskCreation scope", () => {

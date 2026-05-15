@@ -28,7 +28,7 @@ Languages: English (`en`), العربية (`ar`), Deutsch (`de`), Español (`es`
 ## Features
 
 - **Remote coding** — send prompts to OpenCode from anywhere, receive complete results with code sent as files
-- **Session management** — create new sessions or continue existing ones, just like in the TUI
+- **Session management** — create sessions or preview, switch, rename, and delete existing ones
 - **Track live session** — follow a live OpenCode CLI session; see [Track Existing Session](#track-existing-session)
 - **Background session notifications** — get short notifications when detached or non-current sessions in the current project/worktree reply, ask questions, or request permissions
 - **Live status** — pinned message with current project/worktree, model, context usage, and changed files list, updated in real time
@@ -139,14 +139,13 @@ opencode-telegram config
 | `/new`            | Create a new session                                    |
 | `/abort`          | Abort the current task                                  |
 | `/detach`         | Detach from the current session without stopping it     |
-| `/sessions`       | Browse and switch between recent sessions               |
+| `/sessions`       | Preview, switch, rename, and delete recent sessions      |
 | `/messages`       | Browse user messages, revert or fork from a previous state     |
 | `/projects`       | Switch between OpenCode projects                        |
 | `/worktree`       | Switch between existing git worktrees                   |
 | `/open`           | Add a project by browsing directories                   |
 | `/ls`             | List directory contents, then tap to open or download   |
 | `/settings`       | Change bot settings                                     |
-| `/rename`         | Rename the current session                              |
 | `/commands`       | Browse and run custom commands                          |
 | `/skills`         | Browse and run OpenCode skills                          |
 | `/mcps`           | Browse and toggle MCP servers                           |

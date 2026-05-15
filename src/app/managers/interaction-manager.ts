@@ -6,7 +6,6 @@ import type {
 } from "../types/interaction.js";
 import { permissionManager } from "./permission-manager.js";
 import { questionManager } from "./question-manager.js";
-import { renameManager } from "./rename-manager.js";
 import { taskCreationManager } from "./scheduled-task-creation-manager.js";
 import { logger } from "../../utils/logger.js";
 
@@ -164,7 +163,6 @@ export const interactionManager = new InteractionManager();
 export type InteractionErrorScope =
   | "question"
   | "permission"
-  | "rename"
   | "taskCreation"
   | "interaction"
   | "none";
@@ -175,7 +173,6 @@ const SCOPE_TO_INTERACTION_KIND: Record<
 > = {
   question: "question",
   permission: "permission",
-  rename: "rename",
   taskCreation: "task",
 };
 
@@ -201,8 +198,6 @@ export function clearInteractionErrorState(
     questionManager.clear();
   } else if (scope === "permission") {
     permissionManager.clear();
-  } else if (scope === "rename") {
-    renameManager.clear();
   } else {
     taskCreationManager.clear();
   }
@@ -219,27 +214,24 @@ export function clearInteractionErrorState(
 export function clearAllInteractionState(reason: string): void {
   const questionActive = questionManager.isActive();
   const permissionActive = permissionManager.isActive();
-  const renameActive = renameManager.isWaitingForName();
   const taskCreationActive = taskCreationManager.isActive();
   const interactionSnapshot = interactionManager.getSnapshot();
 
   questionManager.clear();
   permissionManager.clear();
-  renameManager.clear();
   taskCreationManager.clear();
   interactionManager.clear(reason);
 
   const hasAnyActiveState =
     questionActive ||
     permissionActive ||
-    renameActive ||
     taskCreationActive ||
     interactionSnapshot !== null;
 
   const message =
     `[InteractionCleanup] Cleared state: reason=${reason}, ` +
     `questionActive=${questionActive}, permissionActive=${permissionActive}, ` +
-    `renameActive=${renameActive}, taskCreationActive=${taskCreationActive}, ` +
+    `taskCreationActive=${taskCreationActive}, ` +
     `interactionKind=${interactionSnapshot?.kind || "none"}`;
 
   if (hasAnyActiveState) {

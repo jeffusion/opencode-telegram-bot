@@ -7,7 +7,6 @@ import { foregroundSessionState } from "../../src/app/managers/foreground-sessio
 import { interactionManager } from "../../src/app/managers/interaction-manager.js";
 import { promptQueue } from "../../src/app/managers/prompt-queue-manager.js";
 import { questionManager } from "../../src/app/managers/question-manager.js";
-import { renameManager } from "../../src/app/managers/rename-manager.js";
 import { taskCreationManager } from "../../src/app/managers/scheduled-task-creation-manager.js";
 
 const mocked = vi.hoisted(() => ({
@@ -40,7 +39,8 @@ vi.mock("../../src/bot/callbacks/model-selection-callback-handler.js", () => ({
   handleModelSearchTextInput: mocked.handleModelSearchTextInput,
 }));
 
-vi.mock("../../src/bot/callbacks/rename-callback-handler.js", () => ({
+vi.mock("../../src/bot/callbacks/session-callback-handler.js", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("../../src/bot/callbacks/session-callback-handler.js")>()),
   handleRenameTextAnswer: mocked.handleRenameTextAnswer,
 }));
 
@@ -142,7 +142,6 @@ describe("bot/rich-message-routing", () => {
     interactionManager.clear("test_setup");
     promptQueue.__resetForTests();
     questionManager.clear();
-    renameManager.clear();
     taskCreationManager.clear();
   });
 

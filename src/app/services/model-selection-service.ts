@@ -1,4 +1,7 @@
-import { getCurrentModel, setCurrentModel } from "../stores/settings-store.js";
+import {
+  getCurrentModel,
+  setCurrentModel,
+} from "../stores/settings-store.js";
 import { config } from "../../config.js";
 import { opencodeClient } from "../../opencode/client.js";
 import { isServerUnavailableError } from "../../utils/opencode-error.js";

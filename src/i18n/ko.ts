@@ -204,6 +204,23 @@ export const ko: I18nDictionary = {
   "sessions.preview.title": "최근 메시지:",
   "sessions.preview.you": "나:",
   "sessions.preview.agent": "에이전트:",
+  "sessions.button.select": "✅ 선택",
+  "sessions.button.rename": "✏️ 이름 변경",
+  "sessions.button.delete": "🗑 삭제",
+  "sessions.button.close": "✖ 닫기",
+  "sessions.current_session": "이미 선택됨",
+  "sessions.rename.prompt": "📝 새 제목을 입력하세요:\n\n현재: {title}",
+  "sessions.rename.cancel": "❌ 취소",
+  "sessions.rename.empty": "⚠️ 제목은 비워 둘 수 없습니다.",
+  "sessions.rename.success": "✅ 세션 이름이 변경되었습니다: {title}",
+  "sessions.rename.error": "🔴 세션 이름 변경에 실패했습니다.",
+  "sessions.delete.confirm": "«{title}» 세션을 삭제할까요? 이 작업은 취소할 수 없습니다.",
+  "sessions.delete.yes": "✅ 예, 삭제",
+  "sessions.delete.no": "❌ 아니요",
+  "sessions.delete.success": "✅ 세션이 삭제되었습니다: {title}",
+  "sessions.delete.not_found": "🔴 세션을 찾을 수 없습니다. 이미 삭제되었을 수 있습니다.",
+  "sessions.delete.error": "🔴 세션 삭제에 실패했습니다.",
+  "sessions.deleted_external": "🗑 세션이 삭제되었습니다: {title}\n연결이 해제되었습니다.",
 
   "messages.project_not_selected":
     "🏗 프로젝트가 선택되지 않았습니다.\n\n먼저 /projects로 프로젝트를 선택해 주세요.",
@@ -477,20 +494,6 @@ export const ko: I18nDictionary = {
   "runtime.container.command_unavailable":
     "⚠️ 이 명령은 Docker 이미지에서 사용할 수 없습니다.",
 
-  "rename.no_session": "⚠️ 활성 세션이 없습니다. 먼저 세션을 만들거나 선택해 주세요.",
-  "rename.prompt": "📝 세션의 새 제목을 입력하세요:\n\n현재: {title}",
-  "rename.empty_title": "⚠️ 제목은 비워 둘 수 없습니다.",
-  "rename.success": "✅ 세션 이름이 변경되었습니다: {title}",
-  "rename.error": "🔴 세션 이름 변경에 실패했습니다.",
-  "rename.cancelled": "❌ 이름 변경이 취소되었습니다.",
-  "rename.inactive_callback": "이름 변경 요청이 비활성 상태입니다",
-  "rename.inactive": "⚠️ 이름 변경 요청이 활성 상태가 아닙니다. /rename을 다시 실행해 주세요.",
-  "rename.blocked.expected_name":
-    "⚠️ 새 세션 이름을 텍스트로 입력하거나 이름 변경 메시지에서 취소를 탭해 주세요.",
-  "rename.blocked.command_not_allowed":
-    "⚠️ 새 이름을 기다리는 동안에는 이 명령어를 사용할 수 없습니다.",
-  "rename.button.cancel": "❌ 취소",
-
   "task.prompt.schedule":
     "⏰ 작업 일정을 자연어로 입력하세요.\n\n예시:\n- 5분마다\n- 매일 17:00\n- 내일 12:00",
   "task.schedule_empty": "⚠️ 일정은 비워 둘 수 없습니다.",
@@ -600,8 +603,6 @@ export const ko: I18nDictionary = {
   "mcps.button.disable": "🔴 비활성화",
   "mcps.button.back": "⬅️ 뒤로",
   "mcps.auth_required": "이 서버는 인증이 필요하여 봇에서 활성화할 수 없습니다.",
-
-  "cmd.description.rename": "현재 세션 이름 변경",
 
   "legacy.models.fetch_error": "🔴 모델 목록을 가져오지 못했습니다. /status로 서버 상태를 확인해 주세요.",
   "legacy.models.empty": "📋 사용 가능한 모델이 없습니다. OpenCode에서 프로바이더를 설정해 주세요.",

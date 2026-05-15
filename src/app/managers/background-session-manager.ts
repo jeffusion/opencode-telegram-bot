@@ -66,6 +66,19 @@ class BackgroundSessionTracker {
       case "session.idle":
         this.handleSessionIdle(event.properties, currentSessionId);
         break;
+      case "session.deleted": {
+        const deletedId = event.properties.info.id;
+        if (deletedId) {
+          this.sessionTitles.delete(deletedId);
+          this.childSessionIds.delete(deletedId);
+          this.completedAssistantMessageIds.delete(deletedId);
+          this.pendingAssistantResponsesBySessionId.delete(deletedId);
+          this.questionRequestIds.delete(deletedId);
+          this.permissionRequestIds.delete(deletedId);
+          logger.debug(`[BackgroundSessionTracker] Cleaned up deleted session: id=${deletedId}`);
+        }
+        break;
+      }
       case "question.asked":
         this.handleRequestEvent("question_asked", event.properties, currentSessionId);
         break;

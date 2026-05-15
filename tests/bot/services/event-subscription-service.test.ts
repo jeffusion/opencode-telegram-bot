@@ -819,13 +819,20 @@ describe("bot/services/event-subscription-service", () => {
     await vi.waitFor(() => {
       expect(permissionManager.getPendingCount()).toBe(2);
     });
-    interactionManager.start({ kind: "rename", expectedInput: "text" });
+    interactionManager.start({
+      kind: "custom",
+      expectedInput: "text",
+      metadata: { action: "session_rename" },
+    });
 
     emitPermissionReplied(summaryAggregator, "permission-2");
 
     await vi.waitFor(() => {
       expect(permissionManager.getPendingCount()).toBe(1);
     });
-    expect(interactionManager.getSnapshot()?.kind).toBe("rename");
+    expect(interactionManager.getSnapshot()).toMatchObject({
+      kind: "custom",
+      metadata: { action: "session_rename" },
+    });
   });
 });

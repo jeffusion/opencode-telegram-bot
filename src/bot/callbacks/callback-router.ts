@@ -22,10 +22,10 @@ import { handlePermissionCallback } from "./permission-callback-handler.js";
 import { handleProjectSelect } from "./project-callback-handler.js";
 import { handlePromptAttachmentCancel } from "./prompt-attachment-callback-handler.js";
 import { handleQuestionCallback } from "./question-callback-handler.js";
-import { handleRenameCancel } from "./rename-callback-handler.js";
 import { handleSettingsCallback } from "./settings-callback-handler.js";
 import {
   handleBackgroundSessionOpen,
+  handleSessionRenameCancelCallback,
   handleSessionSelect,
 } from "./session-callback-handler.js";
 import { handleSkillsCallback } from "./skills-catalog-callback-handler.js";
@@ -171,7 +171,11 @@ export function registerCallbackRouter(bot: Bot<Context>, deps: CallbackRouterDe
     ],
     [
       "rename",
-      { name: "rename", handlers: [handleRenameCancel], errorScope: "rename" },
+      {
+        name: "rename",
+        handlers: [handleSessionRenameCancelCallback],
+        errorScope: "interaction",
+      },
     ],
     [
       "session",
@@ -261,7 +265,6 @@ export function registerCallbackRouter(bot: Bot<Context>, deps: CallbackRouterDe
         logger.debug(`[Bot] Callback handled: data=${data}, handler=inlineMenuCancel`);
         return;
       }
-
       const prefix = parseCallbackPrefix(data);
       const route = prefix ? routes.get(prefix) : undefined;
       if (!route) {

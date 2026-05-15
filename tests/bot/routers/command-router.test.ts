@@ -50,7 +50,6 @@ describe("bot/routers/command-router", () => {
       "detach",
       "task",
       "tasklist",
-      "rename",
       "commands",
       "skills",
       "mcps",
